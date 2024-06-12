@@ -1,0 +1,38 @@
+NAME
+    AGSharedHelperFunctions
+
+SYNOPSIS
+    This module is a basically a bucket for a variety of helpful functions
+
+OVERVIEW
+    Functions:
+        "Get-AGcsvToHashtable" Transforms any object into a searchable hashtable
+            parameters:
+                -csv: accepts any object
+                -key [string]: the field that acts as the hash table key and is searchable
+            returns:
+                a hash table where the "-key" parameter is the key name and the value is all the values in that row, including the key
+        "Read-AGhost" Is just Read-Host but with the formatting options for the prompt that are used with Write-Host 
+            parameters:
+                -prompt [string]: the prompt for the user
+                -backgroundColor [system.consolecolor]: passes a color to write-host -backgroundColor
+                -foregroundColor [system.consolecolor]: passes a color to write-host -foregroundColor
+                -newLine [bool]: adds a new line after the user prompt
+                -noColon [bool]: removes the colon from the user prompt
+            returns:
+                (string) user input 
+        "Format-AGExcel" Takes any object and formats it so it can be pasted directly into an excel or other tab-delimited spreadsheet
+            parameters:
+                -object: takes any object
+                -delimeter [string]: takes a string to act as a delimeter. defaults to tab (`t)
+                -help [switch]: shows the help window
+            returns:
+                adds the delimited object with header to the clipboard
+        "test-agConnection" Checks if a computer is online. Basically a wrapper for "Get-CIMInstance -Class Win32_PingStatus"
+            parameters:
+                -computerName: computer name to check
+                -Count [int]: how many times to attempt connecting. default is 1
+                -timeout [int] = 100: timeout in milliseconds. default is 100
+            returns:
+                $true or $false
+                
